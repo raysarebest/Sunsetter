@@ -9,19 +9,12 @@
 import Cocoa
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
-
-    @IBOutlet weak var window: NSWindow!
-
-
-    func applicationDidFinishLaunching(_ aNotification: Notification) {
+class SSAppDelegate: NSObject, NSApplicationDelegate{
+    func applicationDidFinishLaunching(_ aNotification: Notification) -> Void{
         // Insert code here to initialize your application
     }
 
-    func applicationWillTerminate(_ aNotification: Notification) {
+    func applicationWillTerminate(_ aNotification: Notification) -> Void{
         // Insert code here to tear down your application
     }
-
-
 }
-

@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4C49C60B215F1E730029F64C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C49C60A215F1E730029F64C /* AppDelegate.swift */; };
+		4C49C60B215F1E730029F64C /* SSAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C49C60A215F1E730029F64C /* SSAppDelegate.swift */; };
 		4C49C60D215F1E740029F64C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C49C60C215F1E740029F64C /* Assets.xcassets */; };
 		4C49C610215F1E740029F64C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C49C60E215F1E740029F64C /* MainMenu.xib */; };
 		4C49C61C215F1E740029F64C /* SunsetterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C49C61B215F1E740029F64C /* SunsetterTests.swift */; };
 		4C49C627215F1E740029F64C /* SunsetterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C49C626215F1E740029F64C /* SunsetterUITests.swift */; };
+		4C49C635215F2D4D0029F64C /* SSStatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C49C634215F2D4D0029F64C /* SSStatusMenuController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,7 +34,7 @@
 
 /* Begin PBXFileReference section */
 		4C49C607215F1E730029F64C /* Sunsetter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sunsetter.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		4C49C60A215F1E730029F64C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4C49C60A215F1E730029F64C /* SSAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSAppDelegate.swift; sourceTree = "<group>"; };
 		4C49C60C215F1E740029F64C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4C49C60F215F1E740029F64C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		4C49C611215F1E740029F64C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -44,6 +45,7 @@
 		4C49C622215F1E740029F64C /* SunsetterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SunsetterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C49C626215F1E740029F64C /* SunsetterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunsetterUITests.swift; sourceTree = "<group>"; };
 		4C49C628215F1E740029F64C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4C49C634215F2D4D0029F64C /* SSStatusMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSStatusMenuController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +96,9 @@
 		4C49C609215F1E730029F64C /* Sunsetter */ = {
 			isa = PBXGroup;
 			children = (
-				4C49C60A215F1E730029F64C /* AppDelegate.swift */,
+				4C49C60A215F1E730029F64C /* SSAppDelegate.swift */,
 				4C49C60C215F1E740029F64C /* Assets.xcassets */,
+				4C49C634215F2D4D0029F64C /* SSStatusMenuController.swift */,
 				4C49C60E215F1E740029F64C /* MainMenu.xib */,
 				4C49C611215F1E740029F64C /* Info.plist */,
 				4C49C612215F1E740029F64C /* Sunsetter.entitlements */,
@@ -183,6 +186,7 @@
 		4C49C5FF215F1E730029F64C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = SS;
 				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Michael Hulet";
@@ -251,7 +255,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C49C60B215F1E730029F64C /* AppDelegate.swift in Sources */,
+				4C49C635215F2D4D0029F64C /* SSStatusMenuController.swift in Sources */,
+				4C49C60B215F1E730029F64C /* SSAppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

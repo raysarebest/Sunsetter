@@ -28,5 +28,12 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>LSUIElement</key>
+	<true/>
+	<key>Attribution</key>
+	<array>
+		<string>Sun icon designed by Good Ware on Flaticon</string>
+		<string>Moon icon designed by Freepik on Flaticon</string>
+	</array>
 </dict>
 </plist>
