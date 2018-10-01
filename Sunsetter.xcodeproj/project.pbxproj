@@ -13,6 +13,12 @@
 		4C49C61C215F1E740029F64C /* SunsetterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C49C61B215F1E740029F64C /* SunsetterTests.swift */; };
 		4C49C627215F1E740029F64C /* SunsetterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C49C626215F1E740029F64C /* SunsetterUITests.swift */; };
 		4C49C635215F2D4D0029F64C /* SSStatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C49C634215F2D4D0029F64C /* SSStatusMenuController.swift */; };
+		4C49C638215F318B0029F64C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C49C637215F318B0029F64C /* CoreLocation.framework */; };
+		4CABE4B42161584A009BAAB8 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 4CABE4B32161584A009BAAB8 /* Cartfile */; };
+		4CABE50C21617149009BAAB8 /* Solar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CABE50B21617149009BAAB8 /* Solar.framework */; };
+		4CABE511216171C7009BAAB8 /* Solar.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CABE510216171C7009BAAB8 /* Solar.framework.dSYM */; };
+		4CABE512216177E3009BAAB8 /* Solar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CABE50B21617149009BAAB8 /* Solar.framework */; };
+		4CABE513216177E3009BAAB8 /* Solar.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4CABE50B21617149009BAAB8 /* Solar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +38,30 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		4CABE50D2161718A009BAAB8 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				4CABE511216171C7009BAAB8 /* Solar.framework.dSYM in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4CABE514216177E3009BAAB8 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				4CABE513216177E3009BAAB8 /* Solar.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		4C49C607215F1E730029F64C /* Sunsetter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sunsetter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C49C60A215F1E730029F64C /* SSAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSAppDelegate.swift; sourceTree = "<group>"; };
@@ -46,6 +76,10 @@
 		4C49C626215F1E740029F64C /* SunsetterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunsetterUITests.swift; sourceTree = "<group>"; };
 		4C49C628215F1E740029F64C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C49C634215F2D4D0029F64C /* SSStatusMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSStatusMenuController.swift; sourceTree = "<group>"; };
+		4C49C637215F318B0029F64C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		4CABE4B32161584A009BAAB8 /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Cartfile; path = ../Cartfile; sourceTree = "<group>"; };
+		4CABE50B21617149009BAAB8 /* Solar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Solar.framework; path = Carthage/Build/Mac/Solar.framework; sourceTree = "<group>"; };
+		4CABE510216171C7009BAAB8 /* Solar.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Solar.framework.dSYM; path = ../Carthage/Build/Mac/Solar.framework.dSYM; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +87,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CABE50C21617149009BAAB8 /* Solar.framework in Frameworks */,
+				4CABE512216177E3009BAAB8 /* Solar.framework in Frameworks */,
+				4C49C638215F318B0029F64C /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +117,7 @@
 				4C49C61A215F1E740029F64C /* SunsetterTests */,
 				4C49C625215F1E740029F64C /* SunsetterUITests */,
 				4C49C608215F1E730029F64C /* Products */,
+				4C49C636215F318B0029F64C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -102,6 +140,8 @@
 				4C49C60E215F1E740029F64C /* MainMenu.xib */,
 				4C49C611215F1E740029F64C /* Info.plist */,
 				4C49C612215F1E740029F64C /* Sunsetter.entitlements */,
+				4CABE510216171C7009BAAB8 /* Solar.framework.dSYM */,
+				4CABE4B32161584A009BAAB8 /* Cartfile */,
 			);
 			path = Sunsetter;
 			sourceTree = "<group>";
@@ -124,6 +164,15 @@
 			path = SunsetterUITests;
 			sourceTree = "<group>";
 		};
+		4C49C636215F318B0029F64C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4CABE50B21617149009BAAB8 /* Solar.framework */,
+				4C49C637215F318B0029F64C /* CoreLocation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -134,6 +183,8 @@
 				4C49C603215F1E730029F64C /* Sources */,
 				4C49C604215F1E730029F64C /* Frameworks */,
 				4C49C605215F1E730029F64C /* Resources */,
+				4CABE50D2161718A009BAAB8 /* CopyFiles */,
+				4CABE514216177E3009BAAB8 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -193,6 +244,14 @@
 				TargetAttributes = {
 					4C49C606215F1E730029F64C = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.HardenedRuntime = {
+								enabled = 1;
+							};
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 					4C49C616215F1E740029F64C = {
 						CreatedOnToolsVersion = 10.1;
@@ -229,6 +288,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CABE4B42161584A009BAAB8 /* Cartfile in Resources */,
 				4C49C60D215F1E740029F64C /* Assets.xcassets in Resources */,
 				4C49C610215F1E740029F64C /* MainMenu.xib in Resources */,
 			);
@@ -426,6 +486,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = K3ZLWH83BT;
+				ENABLE_HARDENED_RUNTIME = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = Sunsetter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -445,6 +510,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = K3ZLWH83BT;
+				ENABLE_HARDENED_RUNTIME = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = Sunsetter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
