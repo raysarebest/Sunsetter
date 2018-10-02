@@ -22,14 +22,7 @@ class SSStatusMenuController: NSObject, CLLocationManagerDelegate{
             return statusMenu.item(at: 0)
         }
     }
-    var nextChange: Timer? = nil{
-        didSet{
-            if let timer = nextChange{
-                nextChange?.tolerance = 60
-                RunLoop.current.add(timer, forMode: .common)
-            }
-        }
-    }
+    var nextChange: NSBackgroundActivityScheduler?
 
     //MARK: - Lifecycle methods
 
@@ -46,6 +39,12 @@ class SSStatusMenuController: NSObject, CLLocationManagerDelegate{
         locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
 
         beginTrackingLocation()
+
+        DistributedNotificationCenter.default().addObserver(self, selector: #selector(reactToTimeChange(_:)), name: .NSSystemClockDidChange, object: nil)
+    }
+
+    deinit {
+        DistributedNotificationCenter.default().removeObserver(self)
     }
 
     //MARK: - CLLocationManagerDelegate conformance
@@ -128,33 +127,37 @@ class SSStatusMenuController: NSObject, CLLocationManagerDelegate{
         }
         let nextEvent: String
 
-        func createTimer(for date: Date) -> Void{
-            nextChange = Timer(fire: date, interval: 1, repeats: false, block: changeAction)
+        func createTask(for time: Date) -> Date{
+            nextChange = NSBackgroundActivityScheduler(identifier: "tech.hulet.Sunsetter.changer")
+            nextChange?.interval = time.timeIntervalSinceNow
+            nextChange?.tolerance = 5 * 60
+            nextChange?.schedule({(completion: NSBackgroundActivityScheduler.CompletionHandler) in
+                self.setDarkMode(from: Solar(coordinate: from.coordinate))
+                completion(.finished)
+            })
+            return time
         }
+
+        let changeDate: Date
 
         if Date() < sunrise{
             // Sun is still down, but earlier than sunrise
-            createTimer(for: sunrise)
+            changeDate = createTask(for: sunrise)
             nextEvent = "Sunrise"
         }
         else if from.isDaytime{
             // The sun is up
-            createTimer(for: sunset)
+            changeDate = createTask(for: sunset)
             nextEvent = "Sunset"
         }
         else{
             // It's after sunset, so we need to calculate tomorrow's sunrise
             guard let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: from.date), let tomorrowSunrise = Solar(for: tomorrow, coordinate: from.coordinate)?.sunrise else{ // This should never fail, but if it does, we'll try again in a minute
-                createTimer(for: from.date + 60)
+                changeDate = createTask(for: from.date + 60)
                 return
             }
-            createTimer(for: tomorrowSunrise)
+            changeDate = createTask(for: tomorrowSunrise)
             nextEvent = "Sunrise"
-        }
-
-        guard let changeDate = nextChange?.fireDate else{
-            infoItem?.title = "Error calculating change time"
-            return
         }
 
         let formatter = DateFormatter()
@@ -164,5 +167,13 @@ class SSStatusMenuController: NSObject, CLLocationManagerDelegate{
         DispatchQueue.main.async {
             self.infoItem?.title = "\(nextEvent): \(formatter.string(from: changeDate))"
         }
+    }
+
+    @objc func reactToTimeChange(_ notification: Notification) -> Void{
+        print(notification.name.rawValue)
+        guard let currentLocation = locationManager.location else{
+            return
+        }
+        setDarkMode(from: Solar(coordinate: currentLocation.coordinate))
     }
 }
