@@ -40,7 +40,8 @@ class SSStatusMenuController: NSObject, CLLocationManagerDelegate{
 
         beginTrackingLocation()
 
-        DistributedNotificationCenter.default().addObserver(self, selector: #selector(reactToTimeChange(_:)), name: .NSSystemClockDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reactToPotentialTimeChangeEvent(_:)), name: .NSSystemClockDidChange, object: nil)
+        NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(reactToPotentialTimeChangeEvent(_:)), name: NSWorkspace.screensDidWakeNotification, object: nil)
 
         if let here = locationManager.location, let sun = Solar(coordinate: here.coordinate){
             setDarkMode(from: sun)
@@ -49,7 +50,8 @@ class SSStatusMenuController: NSObject, CLLocationManagerDelegate{
 
     deinit {
         nextChange?.invalidate()
-        DistributedNotificationCenter.default().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
+        NSWorkspace.shared.notificationCenter.removeObserver(self)
     }
 
     //MARK: - CLLocationManagerDelegate conformance
@@ -83,64 +85,48 @@ class SSStatusMenuController: NSObject, CLLocationManagerDelegate{
         }
     }
 
-    func setDarkMode(from: Solar?) -> Void{
-        guard let sun = from else{
-            return
-        }
-        return setDarkMode(from: sun)
-    }
+    func setDarkMode(from: Solar? = nil, forCurrentTime: Bool = true) -> Void{
 
-    func setDarkMode(from: Solar) -> Void{
-        guard let script = NSAppleScript(source: """
-                        tell application id "com.apple.systemevents"
-                            tell appearance preferences
-                                set dark mode to \(!from.isDaytime)
-                            end tell
-                        end tell
-            """) else{
+        let debugFormatter = DateFormatter()
+
+        debugFormatter.timeStyle = .medium
+        debugFormatter.dateStyle = .medium
+
+        print("Analyzed sun position at: " + debugFormatter.string(from: Date()))
+
+        guard let oldSunPosition = from else{
             return
         }
 
-        var error: NSDictionary? = nil
-        script.executeAndReturnError(&error)
+        let sunPosition: Solar
 
-        if let error = error, let code = error["NSAppleScriptErrorNumber"] as? Int{
-            switch code{
-            case -1743:
-                infoItem?.title = "Automation authorization required"
-            default:
-                infoItem?.title = "Error setting appearance"
-            }
+        if forCurrentTime, let currentSunPosition = Solar(coordinate: oldSunPosition.coordinate){
+            sunPosition = currentSunPosition
         }
         else{
-            DispatchQueue.main.async {
-                self.statusItem.button?.image = from.isDaytime ? #imageLiteral(resourceName: "Day") : #imageLiteral(resourceName: "Night")
-            }
+            sunPosition = oldSunPosition
         }
 
-        guard let sunrise = from.sunrise, let sunset = from.sunset else{
+        print("Set dark mode to: \(!sunPosition.isDaytime) at: " + debugFormatter.string(from: Date()))
+
+        setDarkMode(to: !sunPosition.isDaytime)
+
+        guard let sunrise = sunPosition.sunrise, let sunset = sunPosition.sunset else{
             return
         }
 
-        nextChange?.invalidate()
-
-        let changeAction: (Timer) -> Void = {_ in
-            guard let now = Solar(coordinate: from.coordinate) else{
-                return
-            }
-            self.setDarkMode(from: now)
-        }
         let nextEvent: String
 
         func createTask(for time: Date) -> Date{
             let taskTolerance: TimeInterval = 60
             let fireTime = time.timeIntervalSinceNow
             if taskTolerance < fireTime{ // The app will crash if we're within the error interval of the fire date when we schedule a task
+                nextChange?.invalidate()
                 nextChange = NSBackgroundActivityScheduler(identifier: "tech.hulet.Sunsetter.changer")
                 nextChange?.interval = fireTime
                 nextChange?.tolerance = taskTolerance
                 nextChange?.schedule({(completion: NSBackgroundActivityScheduler.CompletionHandler) in
-                    self.setDarkMode(from: Solar(coordinate: from.coordinate))
+                    self.setDarkMode(from: sunPosition)
                     completion(.finished)
                 })
             }
@@ -154,15 +140,15 @@ class SSStatusMenuController: NSObject, CLLocationManagerDelegate{
             changeDate = createTask(for: sunrise)
             nextEvent = "rise"
         }
-        else if from.isDaytime{
+        else if sunPosition.isDaytime{
             // The sun is up
             changeDate = createTask(for: sunset)
             nextEvent = "set"
         }
         else{
             // It's after sunset, so we need to calculate tomorrow's sunrise
-            guard let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: from.date), let tomorrowSunrise = Solar(for: tomorrow, coordinate: from.coordinate)?.sunrise else{ // This should never fail, but if it does, we'll try again in a minute
-                changeDate = createTask(for: from.date + 60)
+            guard let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: sunPosition.date), let tomorrowSunrise = Solar(for: tomorrow, coordinate: sunPosition.coordinate)?.sunrise else{ // This should never fail, but if it does, we'll try again in a minute
+                changeDate = createTask(for: sunPosition.date + 60)
                 return
             }
             changeDate = createTask(for: tomorrowSunrise)
@@ -175,14 +161,55 @@ class SSStatusMenuController: NSObject, CLLocationManagerDelegate{
 
         DispatchQueue.main.async {
             self.infoItem?.title = "Sun\(nextEvent): \(formatter.string(from: changeDate))"
+            self.statusItem.button?.image = sunPosition.isDaytime ? #imageLiteral(resourceName: "Day") : #imageLiteral(resourceName: "Night")
         }
     }
 
-    @objc func reactToTimeChange(_ notification: Notification) -> Void{
-        print(notification.name.rawValue)
+    @objc func reactToPotentialTimeChangeEvent(_ notification: Notification) -> Void{
+        let formatter = DateFormatter()
+        formatter.timeStyle = .medium
+        formatter.dateStyle = .medium
+        print("Reacting to notification: \(notification.name.rawValue) at: " + formatter.string(from: Date()))
         guard let currentLocation = locationManager.location else{
             return
         }
         setDarkMode(from: Solar(coordinate: currentLocation.coordinate))
+    }
+
+    func setDarkMode(to: Bool? = nil) -> Void{ // Passing nil here means toggle it
+
+        let action: String
+
+        if let nextState = to{
+            action = String(nextState)
+        }
+        else{
+            action = "not dark mode"
+        }
+        guard let script = NSAppleScript(source: """
+                            tell application id "com.apple.systemevents"
+                                tell appearance preferences
+                                    set dark mode to \(action)
+                                end tell
+                            end tell
+                        """) else{
+                return
+        }
+
+        var error: NSDictionary? = nil
+        script.executeAndReturnError(&error)
+
+        if let error = error, let code = error["NSAppleScriptErrorNumber"] as? Int{
+            switch code{
+            case -1743:
+                infoItem?.title = "Automation authorization required"
+            default:
+                infoItem?.title = "Error setting appearance"
+            }
+        }
+    }
+
+    @IBAction func toggleDarkMode(_ sender: NSMenuItem?) -> Void{
+        setDarkMode()
     }
 }

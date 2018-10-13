@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C170990216E895C00128950 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C17098E216E895C00128950 /* Main.storyboard */; };
+		4C170996216E8A9B00128950 /* SRAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C942C79216DBA83002B4D2B /* SRAppDelegate.swift */; };
+		4C170997216E8AD700128950 /* Sunriser.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4C170986216E895A00128950 /* Sunriser.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4C49C60B215F1E730029F64C /* SSAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C49C60A215F1E730029F64C /* SSAppDelegate.swift */; };
 		4C49C60D215F1E740029F64C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C49C60C215F1E740029F64C /* Assets.xcassets */; };
 		4C49C610215F1E740029F64C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C49C60E215F1E740029F64C /* MainMenu.xib */; };
@@ -14,10 +17,10 @@
 		4C49C627215F1E740029F64C /* SunsetterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C49C626215F1E740029F64C /* SunsetterUITests.swift */; };
 		4C49C635215F2D4D0029F64C /* SSStatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C49C634215F2D4D0029F64C /* SSStatusMenuController.swift */; };
 		4C49C638215F318B0029F64C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C49C637215F318B0029F64C /* CoreLocation.framework */; };
+		4C9CF251216DC130007B31FA /* Solar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CABE50B21617149009BAAB8 /* Solar.framework */; };
+		4C9CF26A216DC3CF007B31FA /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C9CF269216DC3CF007B31FA /* ServiceManagement.framework */; };
 		4CABE4B42161584A009BAAB8 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 4CABE4B32161584A009BAAB8 /* Cartfile */; };
-		4CABE50C21617149009BAAB8 /* Solar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CABE50B21617149009BAAB8 /* Solar.framework */; };
 		4CABE511216171C7009BAAB8 /* Solar.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CABE510216171C7009BAAB8 /* Solar.framework.dSYM */; };
-		4CABE512216177E3009BAAB8 /* Solar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CABE50B21617149009BAAB8 /* Solar.framework */; };
 		4CABE513216177E3009BAAB8 /* Solar.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4CABE50B21617149009BAAB8 /* Solar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
@@ -39,6 +42,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		4C9CF267216DC1FB007B31FA /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LoginItems;
+			dstSubfolderSpec = 1;
+			files = (
+				4C170997216E8AD700128950 /* Sunriser.app in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4CABE50D2161718A009BAAB8 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -63,6 +76,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4C170986216E895A00128950 /* Sunriser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sunriser.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C17098F216E895C00128950 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4C49C607215F1E730029F64C /* Sunsetter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sunsetter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C49C60A215F1E730029F64C /* SSAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSAppDelegate.swift; sourceTree = "<group>"; };
 		4C49C60C215F1E740029F64C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -77,19 +92,30 @@
 		4C49C628215F1E740029F64C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C49C634215F2D4D0029F64C /* SSStatusMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSStatusMenuController.swift; sourceTree = "<group>"; };
 		4C49C637215F318B0029F64C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		4C942C79216DBA83002B4D2B /* SRAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRAppDelegate.swift; sourceTree = "<group>"; };
+		4C942C80216DBA85002B4D2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4C942C81216DBA85002B4D2B /* Sunriser.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sunriser.entitlements; sourceTree = "<group>"; };
+		4C9CF269216DC3CF007B31FA /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		4CABE4B32161584A009BAAB8 /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Cartfile; path = ../Cartfile; sourceTree = "<group>"; };
 		4CABE50B21617149009BAAB8 /* Solar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Solar.framework; path = Carthage/Build/Mac/Solar.framework; sourceTree = "<group>"; };
 		4CABE510216171C7009BAAB8 /* Solar.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Solar.framework.dSYM; path = ../Carthage/Build/Mac/Solar.framework.dSYM; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		4C170983216E895A00128950 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4C49C604215F1E730029F64C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4CABE50C21617149009BAAB8 /* Solar.framework in Frameworks */,
-				4CABE512216177E3009BAAB8 /* Solar.framework in Frameworks */,
+				4C9CF26A216DC3CF007B31FA /* ServiceManagement.framework in Frameworks */,
 				4C49C638215F318B0029F64C /* CoreLocation.framework in Frameworks */,
+				4C9CF251216DC130007B31FA /* Solar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,6 +142,7 @@
 				4C49C609215F1E730029F64C /* Sunsetter */,
 				4C49C61A215F1E740029F64C /* SunsetterTests */,
 				4C49C625215F1E740029F64C /* SunsetterUITests */,
+				4C942C78216DBA83002B4D2B /* Sunriser */,
 				4C49C608215F1E730029F64C /* Products */,
 				4C49C636215F318B0029F64C /* Frameworks */,
 			);
@@ -127,6 +154,7 @@
 				4C49C607215F1E730029F64C /* Sunsetter.app */,
 				4C49C617215F1E740029F64C /* SunsetterTests.xctest */,
 				4C49C622215F1E740029F64C /* SunsetterUITests.xctest */,
+				4C170986216E895A00128950 /* Sunriser.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -167,15 +195,44 @@
 		4C49C636215F318B0029F64C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4C9CF269216DC3CF007B31FA /* ServiceManagement.framework */,
 				4CABE50B21617149009BAAB8 /* Solar.framework */,
 				4C49C637215F318B0029F64C /* CoreLocation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4C942C78216DBA83002B4D2B /* Sunriser */ = {
+			isa = PBXGroup;
+			children = (
+				4C942C79216DBA83002B4D2B /* SRAppDelegate.swift */,
+				4C942C80216DBA85002B4D2B /* Info.plist */,
+				4C942C81216DBA85002B4D2B /* Sunriser.entitlements */,
+				4C17098E216E895C00128950 /* Main.storyboard */,
+			);
+			path = Sunriser;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		4C170985216E895A00128950 /* Sunriser */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4C170993216E895C00128950 /* Build configuration list for PBXNativeTarget "Sunriser" */;
+			buildPhases = (
+				4C170982216E895A00128950 /* Sources */,
+				4C170983216E895A00128950 /* Frameworks */,
+				4C170984216E895A00128950 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Sunriser;
+			productName = Sunriser;
+			productReference = 4C170986216E895A00128950 /* Sunriser.app */;
+			productType = "com.apple.product-type.application";
+		};
 		4C49C606215F1E730029F64C /* Sunsetter */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4C49C62B215F1E740029F64C /* Build configuration list for PBXNativeTarget "Sunsetter" */;
@@ -184,6 +241,7 @@
 				4C49C604215F1E730029F64C /* Frameworks */,
 				4C49C605215F1E730029F64C /* Resources */,
 				4CABE50D2161718A009BAAB8 /* CopyFiles */,
+				4C9CF267216DC1FB007B31FA /* CopyFiles */,
 				4CABE514216177E3009BAAB8 /* Embed Frameworks */,
 			);
 			buildRules = (
@@ -238,10 +296,18 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = SS;
-				LastSwiftUpdateCheck = 1010;
+				LastSwiftUpdateCheck = 1000;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Michael Hulet";
 				TargetAttributes = {
+					4C170985216E895A00128950 = {
+						CreatedOnToolsVersion = 10.0;
+						SystemCapabilities = {
+							com.apple.HardenedRuntime = {
+								enabled = 1;
+							};
+						};
+					};
 					4C49C606215F1E730029F64C = {
 						CreatedOnToolsVersion = 10.1;
 						SystemCapabilities = {
@@ -279,11 +345,20 @@
 				4C49C606215F1E730029F64C /* Sunsetter */,
 				4C49C616215F1E740029F64C /* SunsetterTests */,
 				4C49C621215F1E740029F64C /* SunsetterUITests */,
+				4C170985216E895A00128950 /* Sunriser */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		4C170984216E895A00128950 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C170990216E895C00128950 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4C49C605215F1E730029F64C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -311,6 +386,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		4C170982216E895A00128950 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C170996216E8A9B00128950 /* SRAppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4C49C603215F1E730029F64C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -352,6 +435,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		4C17098E216E895C00128950 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4C17098F216E895C00128950 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		4C49C60E215F1E740029F64C /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -363,6 +454,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		4C170994216E895C00128950 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = K3ZLWH83BT;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = Sunriser/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = tech.hulet.Sunsetter.Sunriser;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+			};
+			name = Debug;
+		};
+		4C170995216E895C00128950 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = K3ZLWH83BT;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = Sunriser/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = tech.hulet.Sunsetter.Sunriser;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+			};
+			name = Release;
+		};
 		4C49C629215F1E740029F64C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -481,6 +610,7 @@
 		4C49C62C215F1E740029F64C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Sunsetter/Sunsetter.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -496,6 +626,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = tech.hulet.Sunsetter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -505,6 +636,7 @@
 		4C49C62D215F1E740029F64C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Sunsetter/Sunsetter.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -520,6 +652,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = tech.hulet.Sunsetter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -611,6 +744,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4C170993216E895C00128950 /* Build configuration list for PBXNativeTarget "Sunriser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C170994216E895C00128950 /* Debug */,
+				4C170995216E895C00128950 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4C49C602215F1E730029F64C /* Build configuration list for PBXProject "Sunsetter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
